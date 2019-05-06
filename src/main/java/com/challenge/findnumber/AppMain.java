@@ -27,17 +27,23 @@ public class AppMain {
 				filePath = "src/main/resources/numbers.json";
 			}
 
-			while (scan.hasNext()) {
-				int number = scan.nextInt();
-				numberFinderService.findNumber(number, filePath);
-			}
-		} catch (InputMismatchException e) {
-			logger.log(Level.SEVERE, "Invalid number");
-			e.printStackTrace();
+			execute(scan, filePath);
 		} catch (FindNumberException e) {
 			logger.log(Level.SEVERE, String.format("Error processing file %s. Detail: %s", filePath, e.getMessage()),
 					e);
 			e.printStackTrace();
+		}
+	}
+	
+	public static void execute(Scanner scan, String filePath) throws FindNumberException {
+		try {
+			while (scan.hasNext()) {
+				int number = scan.nextInt();
+				numberFinderService.findNumber(number, filePath);
+			}
+		}catch (InputMismatchException e) {
+			logger.log(Level.SEVERE, "Invalid number");
+			throw new FindNumberException("Invalid number", e);
 		}
 	}
 }

@@ -12,7 +12,7 @@ public interface NumberFinder {
 	 * @param filePath
 	 * @throws FindNumberException 
 	 */
-	public void findNumber(int number, String filePath) throws FindNumberException;
+	void findNumber(int number, String filePath) throws FindNumberException;
 
 	/**
 	 * Checks if valueToFind is contained in the list

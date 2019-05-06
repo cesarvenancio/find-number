@@ -64,7 +64,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>libs/</classpathPrefix>
-							<mainClass>com.challenge.customer.AppMain</mainClass>
+							<mainClass>com.challenge.findnumber.AppMain</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -74,7 +74,7 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.4.0</version>
 				<configuration>
-					<mainClass>com.challenge.customer.AppMain</mainClass>
+					<mainClass>com.challenge.findnumber.AppMain</mainClass>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads>
 				</configuration>
 			</plugin>

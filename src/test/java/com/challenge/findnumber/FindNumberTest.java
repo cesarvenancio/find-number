@@ -1,9 +1,11 @@
 package com.challenge.findnumber;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
+import java.util.Scanner;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -22,6 +24,7 @@ public class FindNumberTest {
 	public ExpectedException expectedEx = ExpectedException.none();
 	
 	private static NumberFinderService numberFinderService = new NumberFinderService();
+	private static AppMain app = new AppMain();
 
 	@Test
 	public void whenFileNotExistThenException() throws FindNumberException {
@@ -72,6 +75,18 @@ public class FindNumberTest {
 		expectedEx.expectMessage("Invalid json format");
 		
 		numberFinderService.readFromFile(filePath); 
+	}
+	
+	@Test
+	public void whenInputIsInvalidThenException() throws FindNumberException {
+		
+		String filePath = "src/test/resources/INVALID_FORMAT.json";
+
+		expectedEx.expect(FindNumberException.class);
+		expectedEx.expectMessage("Invalid number");
+		
+        Scanner scan = new Scanner(new ByteArrayInputStream("d".getBytes()));
+		app.execute(scan, filePath);
 	}
 	
 }
