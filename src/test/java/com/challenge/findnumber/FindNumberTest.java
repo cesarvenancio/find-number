@@ -80,13 +80,11 @@ public class FindNumberTest {
 	@Test
 	public void whenInputIsInvalidThenException() throws FindNumberException {
 		
-		String filePath = "src/test/resources/INVALID_FORMAT.json";
-
 		expectedEx.expect(FindNumberException.class);
 		expectedEx.expectMessage("Invalid number");
 		
         Scanner scan = new Scanner(new ByteArrayInputStream("d".getBytes()));
-		app.execute(scan, filePath);
+		app.getNumber(scan);
 	}
 	
 }
